@@ -1,25 +1,29 @@
 html,body {
     font-family: Lato, sans-serif;
     height: 100%;
+    width: 100$;
 
 }
 
 h1 {
     color: #111;
-    font-size: 1.7vw;
+    font-size: 1.5em;
     margin: 10px 0 20px 0;
     text-align: center;
-    opacity: 0.9;
+    opacity: .9;
     text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff;
 }
 
 #hide-places,#show-places {
     width: 48%;
-    color: #444;
+    color: #111;
+    background-color: white;
+    border-radius: 5px;
+    opacity: .8;
 }
 
 #header {
-    opacity: 0.9;
+    opacity: .9;
     position: absolute;
     left: 22%;
     right: 0;
@@ -27,15 +31,19 @@ h1 {
     height: auto;
     background: #333;
     border-radius: 3px;
-    z-index: 3;
+    z-index: 2;
 
+}
+
+#header.full {
+    left: 0;
 }
 
 #menu {
     display: inline-block;
-    padding: 1vw;
-    width: 7vw;
-    height: 7vw;
+    padding: .5em;
+    width: 1.5em;
+    height: 1.5em;
 
 }
 
@@ -65,53 +73,55 @@ h1 {
     z-index: 2;
 }
 
-@media only screen and (max-width: 600px) {
+.side-box.hide {
+    display: none
+}
+
+@media only screen and (max-width: 400px) {
 
     .side-box {
-        display: none;
+        width: 70%;
     }
 
     #header {
-        left: 0;
-    }
-
-    #map {
-        left: 0;
-        width: 100%;
+        left: 72%;
 
     }
 
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (min-width: 400px) and (max-width: 600px) {
 
-    h1 {
-        font-size: 2.2vw;
+    .side-box {
+        width: 60%;
+
+    }
+
+    #header {
+        left: 62%;
+    }
+
+}
+
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+
+    .side-box {
+        width: 45%;
+    }
+
+    #header {
+        left: 47%;
     }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 800px) and (max-width: 1000px) {
 
-    #menu {
-        width: 4vw;
-        height: 4vw;
-        padding: 0.7vw;
+    .side-box {
+        width: 30%;
     }
-}
 
-@media only screen and (min-width: 800px) {
-
-    #menu {
-        width: 3vw;
-        height: 3vw;
-    }
-}
-
-@media only screen and (min-width: 1000px) {
-
-    #menu {
-        width: 2vw;
-        height: 2vw;
+    #header {
+        left: 32%;
     }
 }
 

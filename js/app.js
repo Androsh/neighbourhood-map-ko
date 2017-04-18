@@ -4,6 +4,13 @@ var map;
 //new blank array for all markers
 var markers = [];
 
+$(document).ready(function() {
+    $("#menu").click(function() {
+        $("#header").toggleClass('full'),
+        $(".side-box").toggleClass('hide')
+    })
+})
+
 //function to create new map
 function initMap() {
 
@@ -80,6 +87,5 @@ function initMap() {
          styles: styles,
          mapTypeControl: false
     });
-
 
 }
