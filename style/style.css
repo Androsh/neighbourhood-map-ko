@@ -1,81 +1,117 @@
 html,body {
-        font-family: Arial, sans-serif;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-}
+    font-family: Lato, sans-serif;
+    height: 100%;
 
-.container {
-height: 100%;
-position: relative;
-}
-
-input {
-font-size: 12px;
 }
 
 h1 {
-color: #525454;
-font-size: 22px;
-margin: 0 0 10px 0;
-text-align: center;
+    color: #111;
+    font-size: 1.7vw;
+    margin: 10px 0 20px 0;
+    text-align: center;
+    opacity: 0.9;
+    text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff;
 }
 
-#hide-places,
-#show-places {
-width: 48%;
+#hide-places,#show-places {
+    width: 48%;
+    color: #444;
 }
 
-hr {
-background: #D0D7D9;
-height: 1px;
-margin: 20px 0 20px 0;
-border: none;
+#header {
+    opacity: 0.9;
+    position: absolute;
+    left: 22%;
+    right: 0;
+    top: 0;
+    height: auto;
+    background: #333;
+    border-radius: 3px;
+    z-index: 3;
+
+}
+
+#menu {
+    display: inline-block;
+    padding: 1vw;
+    width: 7vw;
+    height: 7vw;
+
 }
 
 #map {
-bottom:0px;
-height: 100%;
-left: 362px;
-position: absolute;
-right: 0px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+
+
 }
 
 .side-box {
-background: #fff;
-border: 1px solid #999;
-border-radius: 3px;
-height: 100%;
-line-height: 35px;
-padding: 10px 10px 30px 10px;
-text-align: left;
-width: 340px;
+    background: #111;
+    opacity: 0.9;
+    border-radius: 3px;
+    line-height: 30px;
+    padding: 1% 1% 1% 1%;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 20%;
+    z-index: 2;
 }
 
-#pano {
-width: 200px;
-height: 200px;
+@media only screen and (max-width: 600px) {
+
+    .side-box {
+        display: none;
+    }
+
+    #header {
+        left: 0;
+    }
+
+    #map {
+        left: 0;
+        width: 100%;
+
+    }
+
 }
 
-#places-search,
-#search-within-time-text {
-width: 84%;
+@media only screen and (max-width: 800px) {
+
+    h1 {
+        font-size: 2.2vw;
+    }
 }
 
-.text {
-font-size: 12px;
+@media only screen and (min-width: 600px) {
+
+    #menu {
+        width: 4vw;
+        height: 4vw;
+        padding: 0.7vw;
+    }
 }
 
-#toggle-drawing {
-width: 27%;
-position: relative;
-margin-left: 10px;
+@media only screen and (min-width: 800px) {
+
+    #menu {
+        width: 3vw;
+        height: 3vw;
+    }
 }
 
-#zoom-to-area-text {
-width: 70%;
+@media only screen and (min-width: 1000px) {
+
+    #menu {
+        width: 2vw;
+        height: 2vw;
+    }
 }
 
-#zoom-to-area {
-width: 24%;
-  }
