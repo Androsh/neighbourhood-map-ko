@@ -25,13 +25,14 @@ h1 {
 #header {
     opacity: .9;
     position: absolute;
-    left: 22%;
+    left: 17%;
     right: 0;
     top: 0;
     height: auto;
     background: #333;
     border-radius: 3px;
     z-index: 2;
+    border: 1px solid black;
 
 }
 
@@ -41,9 +42,9 @@ h1 {
 
 #menu {
     display: inline-block;
-    padding: .5em;
-    width: 1.5em;
-    height: 1.5em;
+    padding: .3em;
+    width: 1.2em;
+    height: 1.2em;
 
 }
 
@@ -62,6 +63,7 @@ h1 {
     background: #111;
     opacity: 0.9;
     border-radius: 3px;
+    border: 1px solid black;
     line-height: 30px;
     padding: 1% 1% 1% 1%;
     text-align: center;
@@ -69,7 +71,7 @@ h1 {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 20%;
+    width: 15%;
     z-index: 2;
 }
 
@@ -80,11 +82,11 @@ h1 {
 @media only screen and (max-width: 400px) {
 
     .side-box {
-        width: 70%;
+        width: 60%;
     }
 
     #header {
-        left: 72%;
+        left: 62%;
 
     }
 
@@ -93,12 +95,12 @@ h1 {
 @media only screen and (min-width: 400px) and (max-width: 600px) {
 
     .side-box {
-        width: 60%;
+        width: 50%;
 
     }
 
     #header {
-        left: 62%;
+        left: 52%;
     }
 
 }
@@ -106,22 +108,22 @@ h1 {
 @media only screen and (min-width: 600px) and (max-width: 800px) {
 
     .side-box {
-        width: 45%;
+        width: 35%;
     }
 
     #header {
-        left: 47%;
+        left: 37%;
     }
 }
 
 @media only screen and (min-width: 800px) and (max-width: 1000px) {
 
     .side-box {
-        width: 30%;
+        width: 20%;
     }
 
     #header {
-        left: 32%;
+        left: 22%;
     }
 }
 
