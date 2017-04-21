@@ -2,7 +2,6 @@ html,body {
     font-family: Lato, sans-serif;
     height: 100%;
     width: 100$;
-
 }
 
 h1 {
@@ -16,10 +15,10 @@ h1 {
 
 #hide-places,#show-places {
     width: 48%;
-    color: #111;
-    background-color: white;
-    border-radius: 5px;
+    background-color: #fff;
+    border-radius: 8px;
     opacity: .8;
+    border: 1px solid #fff;
 }
 
 #header {
@@ -30,14 +29,15 @@ h1 {
     top: 0;
     height: auto;
     background: #333;
-    border-radius: 3px;
+    border-radius: 5px;
     z-index: 2;
-    border: 1px solid black;
-
 }
 
 #header.full {
     left: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
 }
 
 #menu {
@@ -45,7 +45,6 @@ h1 {
     padding: .3em;
     width: 1.2em;
     height: 1.2em;
-
 }
 
 #map {
@@ -55,15 +54,12 @@ h1 {
     right: 0;
     left: 0;
     z-index: 1;
-
-
 }
 
 .side-box {
     background: #111;
     opacity: 0.9;
-    border-radius: 3px;
-    border: 1px solid black;
+    border-radius: 5px;
     line-height: 30px;
     padding: 1% 1% 1% 1%;
     text-align: center;
@@ -79,7 +75,20 @@ h1 {
     display: none
 }
 
-@media only screen and (max-width: 400px) {
+
+@media only screen and (max-width: 200px) {
+
+    .side-box {
+        display: none;
+    }
+
+    #header {
+        left: 0;
+    }
+}
+
+
+@media only screen and (min-width: 200px) and (max-width: 400px) {
 
     .side-box {
         width: 60%;
@@ -89,7 +98,6 @@ h1 {
         left: 62%;
 
     }
-
 }
 
 @media only screen and (min-width: 400px) and (max-width: 600px) {
@@ -102,7 +110,6 @@ h1 {
     #header {
         left: 52%;
     }
-
 }
 
 @media only screen and (min-width: 600px) and (max-width: 800px) {
