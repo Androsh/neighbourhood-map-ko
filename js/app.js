@@ -1,89 +1,8 @@
-'use strict';
+// 'use strict';
 
 var map;
 //new blank array for all markers
 var markers = [];
-
-var styles = [
-    {
-        featureType: 'water',
-        stylers: [
-          { color: '#19a0d8' }
-        ]
-    },{
-        featureType: 'administrative',
-        elementType: 'labels.text.stroke',
-        stylers: [
-          { color: '#ffffff' },
-          { weight: 6 }
-        ]
-    },{
-        featureType: 'administrative',
-        elementType: 'labels.text.fill',
-        stylers: [
-          { color: '#e85113' }
-        ]
-    },{
-        featureType: 'road.highway',
-        elementType: 'geometry.stroke',
-        stylers: [
-          { color: '#efe9e4' },
-          { lightness: -40 }
-        ]
-    },{
-        featureType: 'transit.station',
-        stylers: [
-          { weight: 9 },
-          { hue: '#e85113' }
-        ]
-    },{
-        featureType: 'road.highway',
-        elementType: 'labels.icon',
-        stylers: [
-          { visibility: 'off' }
-        ]
-    },{
-        featureType: 'water',
-        elementType: 'labels.text.stroke',
-        stylers: [
-          { lightness: 100 }
-        ]
-    },{
-        featureType: 'water',
-        elementType: 'labels.text.fill',
-        stylers: [
-          { lightness: -100 }
-        ]
-    },{
-        featureType: 'poi',
-        elementType: 'geometry',
-        stylers: [
-          { visibility: 'on' },
-          { color: '#f0e4d3' }
-        ]
-    },{
-        featureType: 'road.highway',
-        elementType: 'geometry.fill',
-        stylers: [
-          { color: '#efe9e4' },
-          { lightness: -25 }
-        ]
-    }
-];
-
-var locations = [
-        {title: 'Victoria and Albert Museum', location: {lat: 51.496820, lng: -0.172169}},
-        {title: 'The British Museum', location: {lat: 51.519587, lng: -0.126978}},
-        {title: 'Museum of London', location: {lat: 51.517805, lng: -0.096746}},
-        {title: 'Science Museum', location: {lat: 51.497970, lng: -0.174513}},
-        {title: 'Natural History Museum', location: {lat: 51.496895, lng: -0.176410}},
-        {title: 'National Maritime Museum', location: {lat: 51.481049, lng: -0.005257}},
-        {title: 'Tate Modern', location: {lat: 51.507742, lng: -0.099346}},
-        {title: 'Imperial War Museum', location: {lat: 51.495764, lng: -0.108318}},
-        {title: 'National Army Museum', location: {lat: 51.486907, lng: -0.160508}},
-        {title: 'V&A Museum of Childhood', location: {lat: 51.529208, lng: -0.054941}},
-        {title: 'National Gallery', location: {lat: 51.509096, lng: -0.128288}}
-];
 
 $(document).ready(function() {
     $('#menu').click(function() {
@@ -97,19 +16,19 @@ function initMap() {
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 51.507010, lng: -0.127760},
-         zoom: 13,
+         zoom: 12,
          styles: styles,
          mapTypeControl: false
     });
 
     var largeInfowindow = new google.maps.InfoWindow();
-    // var bounds = new google.maps.LatLngBounds();
+    var bounds = new google.maps.LatLngBounds();
 
     for (var i = 0; i < locations.length; i++) {
         var position = locations[i].location;
         var title = locations[i].title;
         var marker = new google.maps.Marker({
-            // map: map,
+            map: map,
             position: position,
             title: title,
             animation: google.maps.Animation.DROP,
@@ -121,8 +40,6 @@ function initMap() {
         });
 
     }
-    document.getElementById('show-places').addEventListener('click', showPlaces);
-    document.getElementById('hide-places').addEventListener('click', hidePlaces);
 
 }
 
@@ -137,18 +54,61 @@ function populateInfoWindow(marker, infowindow) {
     }
 }
 
-function showPlaces() {
-    var bounds = new google.maps.LatLngBounds();
-    for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(map);
-        bounds.extend(markers[i].position);
-    }
-    map.fitBounds(bounds);
-}
+// var AddMarker = function(place){
+//         var myLatLng = { lat:place.location.lat,
+//                          lng:place.location.lng };
+//         self.marker = new google.maps.Marker({
+//             map:map,
+//             animation: google.maps.Animation.DROP,
+//             position: myLatLng
+//         });
+//         if(self.marker){
+//             self.markersArray().push([myLatLng,
+//                                      self.marker]);
+//             google.maps.event.addListener(marker, 'click', function() {
+//                 // stopAnimation();
+//                 // startAnimation(myLatLng)
+//                 // FoursquareData(place);
+//             });
+//         }
+// };
 
-function hidePlaces() {
-    for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(null);
-    }
-}
+// var removeMarkers = function(){
+//     for(var x=0; x<self.markersArray().length; x++ ){
+//         self.markersArray()[x][1].setMap(null);
+//     }
+
+// var viewModel = function() {
+
+//     var self = this;
+//     this.query = ko.observable();
+//     this.markersArray = ko.observableArray([]);
+
+
+//     // this.locations = ko.observableArray([]);
+
+//     this.searchResults = ko.computed(function() {
+//         q = self.query();
+//         if(!q){
+//             // showMarkers();
+//             return locations;
+//         }
+//         else{
+//             removeMarkers();
+//             return ko.utils.arrayFilter(locations, function(location) {
+//                 if(location.title.toLowerCase().indexOf(q) >= 0) {
+//                     AddMarker(place);
+//                     return location;
+//                 }
+//             });
+//         }
+//     })
+//     // this.title = ko.observable();
+
+//     // searchQuery: ko.observable(''),
+// }
+
+// ko.applyBindings(viewModel);
+
+
 
