@@ -54,61 +54,28 @@ function populateInfoWindow(marker, infowindow) {
     }
 }
 
-// var AddMarker = function(place){
-//         var myLatLng = { lat:place.location.lat,
-//                          lng:place.location.lng };
-//         self.marker = new google.maps.Marker({
-//             map:map,
-//             animation: google.maps.Animation.DROP,
-//             position: myLatLng
-//         });
-//         if(self.marker){
-//             self.markersArray().push([myLatLng,
-//                                      self.marker]);
-//             google.maps.event.addListener(marker, 'click', function() {
-//                 // stopAnimation();
-//                 // startAnimation(myLatLng)
-//                 // FoursquareData(place);
-//             });
-//         }
-// };
+function viewModel() {
 
-// var removeMarkers = function(){
-//     for(var x=0; x<self.markersArray().length; x++ ){
-//         self.markersArray()[x][1].setMap(null);
-//     }
+    var self = this;
+    this.query = ko.observable();
+    this.title = ko.observable(locations.title);
 
-// var viewModel = function() {
+    this.searchResults = ko.computed(function() {
+        i = self.query();
+        if(!i){
+            return locations;
+        }
+        else{
+            return ko.utils.arrayFilter(locations, function(location) {
+                if(location.title.toLowerCase().indexOf(i) >= 0) {
+                    return location;
+                }
+            });
+        }
+    })
+}
 
-//     var self = this;
-//     this.query = ko.observable();
-//     this.markersArray = ko.observableArray([]);
-
-
-//     // this.locations = ko.observableArray([]);
-
-//     this.searchResults = ko.computed(function() {
-//         q = self.query();
-//         if(!q){
-//             // showMarkers();
-//             return locations;
-//         }
-//         else{
-//             removeMarkers();
-//             return ko.utils.arrayFilter(locations, function(location) {
-//                 if(location.title.toLowerCase().indexOf(q) >= 0) {
-//                     AddMarker(place);
-//                     return location;
-//                 }
-//             });
-//         }
-//     })
-//     // this.title = ko.observable();
-
-//     // searchQuery: ko.observable(''),
-// }
-
-// ko.applyBindings(viewModel);
+ko.applyBindings(viewModel);
 
 
 
