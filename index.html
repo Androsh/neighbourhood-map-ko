@@ -18,9 +18,9 @@
             </div>
             <div class="side-box">
                 <h1>London's Free Museums</h1>
-                <input type="search" class="search" data-bind="textInput: query" placeholder="Search" autocomplete="on">
+                <input type="search" class="search" data-bind="textInput: query" placeholder="Filter" autocomplete="on">
                 <ul data-bind="foreach: searchResults">
-                    <li class="places"><a href="#" class="places" data-bind="text: title"></a>
+                    <li class="places"><a href="#" class="places" data-bind="text: title, click: viewLocations"></a>
                     </li>
                 </ul>
             </div>
