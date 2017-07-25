@@ -1,6 +1,8 @@
 var map;
 
-var fs_lientID
+var fsId = "CAJJ01O21YXUC50X4PZZYD4XLHPFWEGHXYARUNRQZOPCTUTQ";
+
+var fsSecret = "F4J4RV4NMGQ2VFNP1Y4IEHBOEQ5WAXSSZWHIEYST4DOYPBTB";
 
 $(document).ready(function() {
     $('#menu').click(function() {
@@ -79,6 +81,15 @@ function stopAnimation(){
   }
 }
 
+function showInfoWindow(){
+    console.log('jjjj');
+    var contentString = '<div>' + '<b>' + marker.title + '</b>' + '</div>' + '<div>' + 'phone: ' + self.place_description + '</div>';
+
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+}
+
 function fourSquare(place){
   var currentDate = new Date();
   var day = currentDate.getDate();
@@ -106,14 +117,9 @@ function fourSquare(place){
     // If call is successfull stores data in the variables.
     self.place_name(data.response.venue.name);
     self.place_description(data.response.venue.description);
-    self.place_image(data.response.venue.bestPhoto.prefix + "320x200" + data.response.venue.bestPhoto.suffix);
-    self.place_rating("Rating : " + data.response.venue.rating);
-    if(data.response.venue.contact.phone !== undefined || data.response.venue.contact.phone !== null){
-        self.place_contact("Contact number : "+data.response.venue.contact.phone);
-    }
   }).error(function(data){
     // If call is unsuccessfull this function is called.
-    fourSquareApiLoadError();
+    fourSquareError();
   });
 
 }
@@ -124,7 +130,8 @@ function viewModel() {
     this.markerArray = ko.observableArray([]);
     this.query = ko.observable();
     this.title = ko.observable(locations.title);
-
+    this.place_name = ko.observable();
+    this.place_description = ko.observable();
     this.searchResults = ko.computed(function() {
         i = self.query();
         if(!i){
