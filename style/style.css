@@ -73,7 +73,20 @@ h1 {
 }
 
 .side-box.hide {
-    display: none
+    display: none;
+}
+
+.list {
+    list-style: none;
+    text-align: center;
+    padding-left: 0px;
+}
+
+.places {
+    text-decoration: none;
+    color: #ccc;
+    opacity: .9;
+    line-height: 50px;
 }
 
 
@@ -97,7 +110,10 @@ h1 {
 
     #header {
         left: 62%;
+    }
 
+    .list {
+        font-size: 4vw;
     }
 }
 
@@ -124,14 +140,13 @@ h1 {
     }
 }
 
-@media only screen and (min-width: 800px) and (max-width: 1000px) {
+@media only screen and (min-width: 800px) and (max-width: 1200px) {
 
     .side-box {
-        width: 20%;
+        width: 23%;
     }
 
     #header {
-        left: 22%;
+        left: 25%;
     }
 }
-
