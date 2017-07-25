@@ -139,14 +139,7 @@ h1 {
     }
 }
 
-<<<<<<< HEAD
 @media only screen and (min-width: 850px) and (max-width: 1200px) {
-||||||| merged common ancestors
-@media only screen and (min-width: 800px) and (max-width: 1000px) {
-=======
-@media only screen and (min-width: 800px) and (max-width: 1200px) {
->>>>>>> 09cbf0808f7130a0d5fe1644593e2c514b3ef7bb
-
     .side-box {
         width: 23%;
     }
