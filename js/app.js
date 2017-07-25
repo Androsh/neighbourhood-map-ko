@@ -25,6 +25,8 @@ function initMap() {
         addMarker(locations[i]);
     }
 
+    // infoWindow = new google.maps.InfoWindow();
+
 }
 //function to add marker to the map
 function addMarker(place){
@@ -41,9 +43,9 @@ function addMarker(place){
   if(self.marker){
     self.markerArray().push([latLong, self.marker]);
     google.maps.event.addListener(marker, "click", function(){
-      stopAnimation();
-      startAnimation(latLong);
-      showInfoWindow();
+        stopAnimation();
+        startAnimation(latLong);
+        fourSquare(place);
     });
   }
 }
@@ -81,55 +83,27 @@ function stopAnimation(){
   }
 }
 
-function showInfoWindow(){
-    console.log('jjjj');
-    var contentString = '<div>' + '<b>' + marker.title + '</b>' + '</div>' + '<div>' + 'phone: ' + self.place_description + '</div>';
-
-    var infowindow = new google.maps.InfoWindow({
-        content: contentString
-    });
-}
-
 function fourSquare(place){
-  var currentDate = new Date();
-  var day = currentDate.getDate();
-  var month= currentDate.getMonth() + 1;
-  var year = currentDate.getFullYear();
-
-  if(day < 10){
-    day = "0" + day;
-  }
-
-  if(month < 10){
-    month = "0" + month;
-  }
-
-  var today = ""+year+month+day+"";
   var venue_id = place.venue_id;
-  var url = "https://api.foursquare.com/v2/venues/"+venue_id+"?client_id="+fsId+"&client_secret="+fsSecret+"&v="+today+"";
+  var url = "https://api.foursquare.com/v2/venues/"+venue_id+"?client_id="+fsId+"&client_secret="+fsSecret+"&v="+20170101+"";
 
-  // Ajax function is called here
+  //function to make ajax request.
   $.ajax({
     url: url,
     dataType: "json",
-    async: true
-  }).success(function(data){
-    // If call is successfull stores data in the variables.
-    self.place_name(data.response.venue.name);
-    self.place_description(data.response.venue.description);
-  }).error(function(data){
-    // If call is unsuccessfull this function is called.
-    fourSquareError();
+    async: true,
+    success: function (data){
+        self.place_name(data.response.venue.name);
+        self.place_description(data.response.venue.description);
+    }
   });
 
 }
 
 function viewModel() {
-
     var self = this;
     this.markerArray = ko.observableArray([]);
     this.query = ko.observable();
-    this.title = ko.observable(locations.title);
     this.place_name = ko.observable();
     this.place_description = ko.observable();
     this.searchResults = ko.computed(function() {
@@ -153,7 +127,7 @@ function viewModel() {
         var latLong = {lat: place.location.lat, lng: place.location.lng};
         stopAnimation();
         startAnimation(latLong);
-        showInfoWindow();
+        fourSquare(place);
     };
 }
 

@@ -8,7 +8,6 @@ h1 {
     color: #111;
     font-size: 1.5em;
     margin: 10px 0 20px 0;
-    text-align: center;
     opacity: .9;
     text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff;
 }
@@ -85,7 +84,11 @@ h1 {
     text-decoration: none;
     color: #ccc;
     opacity: .9;
-    line-height: 50px;
+    line-height: 20px;
+}
+
+.description {
+    color: #ccc;
 }
 
 
@@ -112,6 +115,10 @@ h1 {
     }
 
     .list {
+        font-size: 4vw;
+    }
+
+    .description {
         font-size: 4vw;
     }
 }
