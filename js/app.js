@@ -1,5 +1,7 @@
 var map;
 
+var fs_lientID
+
 $(document).ready(function() {
     $('#menu').click(function() {
         $('#header').toggleClass('full'),
@@ -23,10 +25,10 @@ function initMap() {
 
 }
 //function to add marker to the map
-function addMarker(locations){
+function addMarker(place){
   var latLong = {
-    lat: locations.location.lat,
-    lng: locations.location.lng
+    lat: place.location.lat,
+    lng: place.location.lng
   };
   self.marker = new google.maps.Marker({
     map: map,
@@ -39,6 +41,7 @@ function addMarker(locations){
     google.maps.event.addListener(marker, "click", function(){
       stopAnimation();
       startAnimation(latLong);
+      showInfoWindow();
     });
   }
 }
@@ -76,6 +79,45 @@ function stopAnimation(){
   }
 }
 
+function fourSquare(place){
+  var currentDate = new Date();
+  var day = currentDate.getDate();
+  var month= currentDate.getMonth() + 1;
+  var year = currentDate.getFullYear();
+
+  if(day < 10){
+    day = "0" + day;
+  }
+
+  if(month < 10){
+    month = "0" + month;
+  }
+
+  var today = ""+year+month+day+"";
+  var venue_id = place.venue_id;
+  var url = "https://api.foursquare.com/v2/venues/"+venue_id+"?client_id="+fsId+"&client_secret="+fsSecret+"&v="+today+"";
+
+  // Ajax function is called here
+  $.ajax({
+    url: url,
+    dataType: "json",
+    async: true
+  }).success(function(data){
+    // If call is successfull stores data in the variables.
+    self.place_name(data.response.venue.name);
+    self.place_description(data.response.venue.description);
+    self.place_image(data.response.venue.bestPhoto.prefix + "320x200" + data.response.venue.bestPhoto.suffix);
+    self.place_rating("Rating : " + data.response.venue.rating);
+    if(data.response.venue.contact.phone !== undefined || data.response.venue.contact.phone !== null){
+        self.place_contact("Contact number : "+data.response.venue.contact.phone);
+    }
+  }).error(function(data){
+    // If call is unsuccessfull this function is called.
+    fourSquareApiLoadError();
+  });
+
+}
+
 function viewModel() {
 
     var self = this;
@@ -91,19 +133,20 @@ function viewModel() {
         }
         else{
             removeMarker();
-            return ko.utils.arrayFilter(locations, function(location) {
-                if(location.title.toLowerCase().indexOf(i) >= 0) {
-                    addMarker(location);
-                    return location;
+            return ko.utils.arrayFilter(locations, function(place) {
+                if(place.title.toLowerCase().indexOf(i) >= 0) {
+                    addMarker(place);
+                    return place;
                 }
             });
         }
     })
 
-    this.viewLocations = function(locations){
-        var latLong = {lat: locations.location.lat, lng: locations.location.lng};
+    this.viewLocations = function(place){
+        var latLong = {lat: place.location.lat, lng: place.location.lng};
         stopAnimation();
         startAnimation(latLong);
+        showInfoWindow();
     };
 }
 
