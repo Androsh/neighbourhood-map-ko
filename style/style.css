@@ -1,4 +1,5 @@
-html,body {
+html,
+body {
     font-family: Lato, sans-serif;
     height: 100%;
     width: 100$;
@@ -12,7 +13,8 @@ h1 {
     text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff;
 }
 
-#hide-places,#show-places {
+#hide-places,
+#show-places {
     width: 48%;
     background-color: #fff;
     border-radius: 8px;
@@ -90,6 +92,7 @@ h1 {
 
 .description {
     color: #ccc;
+    word-wrap: break-word;
 }
 
 

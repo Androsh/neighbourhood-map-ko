@@ -98,10 +98,13 @@ function fourSquare(place){
         alert("Something's wrong!!!");
     }
   });
-
 }
 
-function viewModel() {
+function mapError(){
+    alert("where's the map?!?");
+};
+
+function ViewModel() {
     var self = this;
     this.markerArray = ko.observableArray([]);
     this.query = ko.observable();
@@ -132,4 +135,4 @@ function viewModel() {
     };
 }
 
-ko.applyBindings(viewModel);
+ko.applyBindings(ViewModel);
