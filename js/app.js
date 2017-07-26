@@ -102,7 +102,7 @@ function fourSquare(place){
 
 function mapError(){
     alert("where's the map?!?");
-};
+}
 
 function ViewModel() {
     var self = this;
