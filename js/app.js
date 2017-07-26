@@ -7,9 +7,9 @@ var fsSecret = "F4J4RV4NMGQ2VFNP1Y4IEHBOEQ5WAXSSZWHIEYST4DOYPBTB";
 $(document).ready(function() {
     $('#menu').click(function() {
         $('#header').toggleClass('full'),
-        $('.side-box').toggleClass('hide')
-    })
-})
+        $('.side-box').toggleClass('hide');
+    });
+});
 
 //function to create new map
 function initMap() {
@@ -122,7 +122,7 @@ function viewModel() {
                 }
             });
         }
-    })
+    });
 
     this.viewLocations = function(place){
         var latLong = {lat: place.location.lat, lng: place.location.lng};
