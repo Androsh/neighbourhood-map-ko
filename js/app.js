@@ -6,7 +6,7 @@ var fsSecret = "F4J4RV4NMGQ2VFNP1Y4IEHBOEQ5WAXSSZWHIEYST4DOYPBTB";
 
 $(document).ready(function() {
     $('#menu').click(function() {
-        $('#header').toggleClass('full'),
+        $('#header').toggleClass('full');
         $('.side-box').toggleClass('hide');
     });
 });
