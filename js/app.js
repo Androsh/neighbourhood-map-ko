@@ -95,6 +95,9 @@ function fourSquare(place){
     success: function (data){
         self.place_name(data.response.venue.name);
         self.place_description(data.response.venue.description);
+    },
+    error: function() {
+        alert("Something's wrong!!!");
     }
   });
 

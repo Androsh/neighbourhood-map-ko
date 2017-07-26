@@ -69,6 +69,7 @@ h1 {
     bottom: 0;
     width: 15%;
     z-index: 2;
+    font-size: 1.2vw;
 }
 
 .side-box.hide {
@@ -114,12 +115,8 @@ h1 {
         left: 62%;
     }
 
-    .list {
-        font-size: 4vw;
-    }
-
-    .description {
-        font-size: 4vw;
+    .side-box {
+        font-size: 3.6vw;
     }
 }
 
@@ -133,9 +130,13 @@ h1 {
     #header {
         left: 52%;
     }
+
+    .side-box {
+        font-size: 2.6vw;
+    }
 }
 
-@media only screen and (min-width: 600px) and (max-width: 850px) {
+@media only screen and (min-width: 600px) and (max-width: 800px) {
 
     .side-box {
         width: 35%;
@@ -144,9 +145,13 @@ h1 {
     #header {
         left: 37%;
     }
+
+    .side-box {
+        font-size: 1.9vw;
+    }
 }
 
-@media only screen and (min-width: 850px) and (max-width: 1200px) {
+@media only screen and (min-width: 800px) and (max-width: 1200px) {
     .side-box {
         width: 23%;
     }
