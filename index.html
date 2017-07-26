@@ -9,13 +9,13 @@
     </head>
     <body>
         <div class="container">
-            <div id="header">
+            <header id="header">
                 <a id="menu">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
                     </svg>
                 </a>
-            </div>
+            </header>
             <aside class="side-box">
                 <h1>London's Free Museums</h1>
                 <input type="search" class="search" data-bind="textInput: query" placeholder="Filter" autocomplete="on">
@@ -24,19 +24,19 @@
                     </li>
                 </ul>
                 <div class="description">
-                    <h3 data-bind="text: place_name"></h3>
-                    <p data-bind="text: place_description"></p>
+                    <h3 data-bind="text: placeName"></h3>
+                    <p data-bind="text: placeDescription"></p>
                 </div>
             </aside>
         </div>
-        <div id="map"></div>
+        <main id="map"></main>
     <script defer src="js/lib/jquery-3.2.1.js"></script>
     <script defer src="js/lib/knockout-3.4.2.js"></script>
     <script defer src="js/styles.js"></script>
     <script defer src="js/model.js"></script>
     <script defer src="js/app.js"></script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN3f5gS3L_4VZEkBdNC6jaL0DiPyXUDsg&v=3&callback=initMap" async defer onerror="mapError()">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN3f5gS3L_4VZEkBdNC6jaL0DiPyXUDsg&v=3&callback=initMap" async onerror="mapError()">
     </script>
 
     </body>

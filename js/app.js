@@ -56,19 +56,27 @@ function removeMarker(){
 }
 
 //fuction show all the makers on the map
-function showMarker(){
+function showAllMarkers(){
   for(var i=0; i<self.markerArray().length; i++){
     self.markerArray()[i][1].setVisible(true);
+  }
+}
+
+function showMarker(place){
+  for(var i=0;i<self.markerArray().length; i++){
+    if(place.location.lat == self.markerArray()[i][0].lat && place.location.lng == self.markerArray()[i][0].lng){
+      self.markerArray()[i][1].setVisible(true);
+    }
   }
 }
 
 //function to display bounce animation on the marker when clicked.
 function startAnimation(latLong){
   ko.computed(function(){
-    ko.utils.arrayForEach(self.markerArray(), function(m){
-      if(latLong.lat === m[0].lat && latLong.lng === m[0].lng){
-        m[1].setVisible(true);
-        m[1].setAnimation(google.maps.Animation.BOUNCE);
+    ko.utils.arrayForEach(self.markerArray(), function(i){
+      if(latLong.lat === i[0].lat && latLong.lng === i[0].lng){
+        i[1].setVisible(true);
+        i[1].setAnimation(google.maps.Animation.BOUNCE);
       }
     });
   });
@@ -91,8 +99,8 @@ function fourSquare(place){
     dataType: "json",
     async: true,
     success: function (data){
-        self.place_name(data.response.venue.name);
-        self.place_description(data.response.venue.description);
+        self.placeName(data.response.venue.name);
+        self.placeDescription(data.response.venue.description);
     },
     error: function() {
         alert("Something's wrong!!!");
@@ -104,23 +112,23 @@ function mapError(){
     alert("where's the map?!?");
 }
 
-function ViewModel() {
+function viewModel() {
     var self = this;
     this.markerArray = ko.observableArray([]);
     this.query = ko.observable();
-    this.place_name = ko.observable();
-    this.place_description = ko.observable();
+    this.placeName = ko.observable();
+    this.placeDescription = ko.observable();
     this.searchResults = ko.computed(function() {
         i = self.query();
         if(!i){
-            showMarker();
+            showAllMarkers();
             return locations;
         }
         else{
             removeMarker();
             return ko.utils.arrayFilter(locations, function(place) {
                 if(place.title.toLowerCase().indexOf(i) >= 0) {
-                    addMarker(place);
+                    showMarker(place);
                     return place;
                 }
             });
@@ -135,4 +143,4 @@ function ViewModel() {
     };
 }
 
-ko.applyBindings(ViewModel);
+ko.applyBindings(viewModel);
