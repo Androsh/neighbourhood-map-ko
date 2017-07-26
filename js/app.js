@@ -25,8 +25,6 @@ function initMap() {
         addMarker(locations[i]);
     }
 
-    // infoWindow = new google.maps.InfoWindow();
-
 }
 //function to add marker to the map
 function addMarker(place){
