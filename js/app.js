@@ -102,7 +102,7 @@ function fourSquare(place){
         self.placeName(data.response.venue.name);
         self.placeDescription(data.response.venue.description);
         self.placeRating("Rating : " + data.response.venue.rating);
-        if(data.response.venue.rating == undefined || data.response.venue.rating == null){
+        if(data.response.venue.rating === undefined || data.response.venue.rating === null){
         self.placeRating("Rating unavailable, sorry");
         }
 
