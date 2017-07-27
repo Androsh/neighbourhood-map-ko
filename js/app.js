@@ -101,6 +101,8 @@ function fourSquare(place){
     success: function (data){
         self.placeName(data.response.venue.name);
         self.placeDescription(data.response.venue.description);
+        self.placeRating("Rating : " + data.response.venue.rating);
+
     },
     error: function() {
         alert("Something's wrong!!!");
@@ -118,6 +120,7 @@ function viewModel() {
     this.query = ko.observable();
     this.placeName = ko.observable();
     this.placeDescription = ko.observable();
+    this.placeRating = ko.observable();
     this.searchResults = ko.computed(function() {
         i = self.query();
         if(!i){
